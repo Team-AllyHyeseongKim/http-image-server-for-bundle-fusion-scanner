@@ -36,9 +36,6 @@
     <ClCompile Include="Source\BinaryDumpReader.cpp">
       <Filter>Sensors</Filter>
     </ClCompile>
-    <ClCompile Include="Source\RGBDSensor.cpp">
-      <Filter>Sensors</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GlobalAppState.cpp" />
     <ClCompile Include="Source\CUDAImageManager.cpp">
       <Filter>Sensors</Filter>
@@ -124,14 +121,8 @@
     <ClCompile Include="Source\TrajectoryManager.cpp" />
     <ClCompile Include="Source\DualGPU.cpp" />
     <ClCompile Include="Source\uplink.cpp" />
-    <ClCompile Include="Source\StructureSensor.cpp">
-      <Filter>Sensors</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ConditionManager.cpp" />
     <ClCompile Include="Source\SiftVisualization.cpp" />
-    <ClCompile Include="Source\PrimeSenseSensor.cpp">
-      <Filter>Sensors</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SBA.cpp">
       <Filter>SBA</Filter>
     </ClCompile>
@@ -143,10 +134,7 @@
     </ClCompile>
     <ClCompile Include="Source\OnlineBundler.cpp" />
     <ClCompile Include="Source\CorrespondenceEvaluator.cpp" />
-    <ClCompile Include="Source\KinectSensor.cpp">
-      <Filter>Sensors</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\KinectOneSensor.cpp">
+    <ClCompile Include="Source\RGBDSensor.cpp">
       <Filter>Sensors</Filter>
     </ClCompile>
   </ItemGroup>
@@ -184,9 +172,6 @@
       <Filter>DXUT</Filter>
     </ClInclude>
     <ClInclude Include="Source\BinaryDumpReader.h">
-      <Filter>Sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RGBDSensor.h">
       <Filter>Sensors</Filter>
     </ClInclude>
     <ClInclude Include="Source\GlobalAppState.h" />
@@ -365,14 +350,8 @@
       <Filter>SiftGPU</Filter>
     </ClInclude>
     <ClInclude Include="Source\DualGPU.h" />
-    <ClInclude Include="Source\StructureSensor.h">
-      <Filter>Sensors</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ConditionManager.h" />
     <ClInclude Include="Source\SiftVisualization.h" />
-    <ClInclude Include="Source\PrimeSenseSensor.h">
-      <Filter>Sensors</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SBA.h">
       <Filter>SBA</Filter>
     </ClInclude>
@@ -393,10 +372,7 @@
     <ClInclude Include="Source\OnlineBundler.h" />
     <ClInclude Include="Source\OnlineBundlerHelper.h" />
     <ClInclude Include="Source\CorrespondenceEvaluator.h" />
-    <ClInclude Include="Source\KinectSensor.h">
-      <Filter>Sensors</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\KinectOneSensor.h">
+    <ClInclude Include="Source\RGBDSensor.h">
       <Filter>Sensors</Filter>
     </ClInclude>
   </ItemGroup>

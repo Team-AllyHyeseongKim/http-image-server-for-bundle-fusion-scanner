@@ -36,7 +36,6 @@
 #include "CUDAImageManager.h"
 
 #include "../BinaryDumpReader.h"
-#include "../StructureSensor.h"
 #include "../SensorDataReader.h"
 #include "../TimingLog.h"
 

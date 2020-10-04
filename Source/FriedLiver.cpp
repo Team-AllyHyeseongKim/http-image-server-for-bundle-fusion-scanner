@@ -1,104 +1,16 @@
-
-
 #include "stdafx.h"
-
 #include "FriedLiver.h"
 
 RGBDSensor* getRGBDSensor()
 {
 	static RGBDSensor* g_sensor = NULL;
-	if (g_sensor != NULL)	return g_sensor;
 
-	if (GlobalAppState::get().s_sensorIdx == 0) {
-#ifdef KINECT
-		//static KinectSensor s_kinect;
-		//return &s_kinect;
-		g_sensor = new KinectSensor;
-		return g_sensor;
-#else 
-		throw MLIB_EXCEPTION("Requires KINECT V1 SDK and enable KINECT macro");
-#endif
-	}
-
-	if (GlobalAppState::get().s_sensorIdx == 1)	{
-#ifdef OPEN_NI
-		//static PrimeSenseSensor s_primeSense;
-		//return &s_primeSense;
-		g_sensor = new PrimeSenseSensor;
-		return g_sensor;
-#else 
-		throw MLIB_EXCEPTION("Requires OpenNI 2 SDK and enable OPEN_NI macro");
-#endif
-	}
-	else if (GlobalAppState::getInstance().s_sensorIdx == 2) {
-#ifdef KINECT_ONE
-		//static KinectOneSensor s_kinectOne;
-		//return &s_kinectOne;
-		g_sensor = new KinectOneSensor;
-		return g_sensor;
-#else
-		throw MLIB_EXCEPTION("Requires Kinect 2.0 SDK and enable KINECT_ONE macro");
-#endif
-	}
-	if (GlobalAppState::get().s_sensorIdx == 3) {
-#ifdef BINARY_DUMP_READER
-		//static BinaryDumpReader s_binaryDump;
-		//return &s_binaryDump;
-		g_sensor = new BinaryDumpReader;
-		return g_sensor;
-#else 
-		throw MLIB_EXCEPTION("Requires BINARY_DUMP_READER macro");
-#endif
-	}
-	//	if (GlobalAppState::get().s_sensorIdx == 4) {
-	//		//static NetworkSensor s_networkSensor;
-	//		//return &s_networkSensor;
-	//		g_sensor = new NetworkSensor;
-	//		return g_sensor;
-	//}
-	if (GlobalAppState::get().s_sensorIdx == 5) {
-#ifdef INTEL_SENSOR
-		//static IntelSensor s_intelSensor;
-		//return &s_intelSensor;
-		g_sensor = new IntelSensor;
-		return g_sensor;
-#else 
-		throw MLIB_EXCEPTION("Requires INTEL_SENSOR macro");
-#endif
-	}
-	if (GlobalAppState::get().s_sensorIdx == 6) {
-#ifdef REAL_SENSE
-		//static RealSenseSensor s_realSenseSensor;
-		//return &s_realSenseSensor;
-		g_sensor = RealSenseSensor;
-		return g_sensor;
-#else
-		throw MLIB_EXCEPTION("Requires Real Sense SDK and REAL_SENSE macro");
-#endif
-	}
-	if (GlobalAppState::get().s_sensorIdx == 7) {
-#ifdef STRUCTURE_SENSOR
-		//static StructureSensor s_structureSensor;
-		//return &s_structureSensor;
-		g_sensor = new StructureSensor;
-		return g_sensor;
-#else
-		throw MLIB_EXCEPTION("Requires STRUCTURE_SENSOR macro");
-#endif
-	}
 	if (GlobalAppState::get().s_sensorIdx == 8) {
-#ifdef SENSOR_DATA_READER
-		//static SensorDataReader s_sensorDataReader;
-		//return &s_sensorDataReader;
 		g_sensor = new SensorDataReader;
 		return g_sensor;
-#else
-		throw MLIB_EXCEPTION("Requires STRUCTURE_SENSOR macro");
-#endif
 	}
 
 	throw MLIB_EXCEPTION("unkown sensor id " + std::to_string(GlobalAppState::get().s_sensorIdx));
-
 	return NULL;
 }
 
@@ -190,62 +102,13 @@ int main(int argc, char** argv)
 #endif 
 
 	try {
-		std::string fileNameDescGlobalApp;
-		std::string fileNameDescGlobalBundling;
-		if (argc >= 3) {
-			fileNameDescGlobalApp = std::string(argv[1]);
-			fileNameDescGlobalBundling = std::string(argv[2]);
-		}
-		else {
-			std::cout << "usage: DepthSensing [fileNameDescGlobalApp] [fileNameDescGlobalTracking]" << std::endl;
-			fileNameDescGlobalApp = "zParametersDefault.txt";
-			fileNameDescGlobalBundling = "zParametersBundlingDefault.txt";
-			//fileNameDescGlobalBundling = "zParametersBundling20K.txt";
-
-			//fileNameDescGlobalApp = "zParametersSun3d.txt";
-			//fileNameDescGlobalBundling = "zParametersBundlingSun3d.txt";
-
-			//fileNameDescGlobalApp = "zParametersHigh.txt";
-			//fileNameDescGlobalBundling = "zParametersBundlingHigh.txt";
-
-			//fileNameDescGlobalApp = "zParametersTUM.txt";
-			//fileNameDescGlobalBundling = "zParametersBundlingTUM.txt";
-			//fileNameDescGlobalApp = "zParametersICL.txt"; //TODO HERE ANGIE
-			//fileNameDescGlobalBundling = "zParametersBundlingTUM.txt";
-
-			//fileNameDescGlobalApp = "zParametersAug.txt";
-			//fileNameDescGlobalBundling = "zParametersBundlingAug.txt";
-
-			//fileNameDescGlobalApp = "zParametersScanNet.txt";
-			//fileNameDescGlobalBundling = "zParametersBundlingScanNet.txt";
-		}
-
-		std::cout << VAR_NAME(fileNameDescGlobalApp) << " = " << fileNameDescGlobalApp << std::endl;
-		std::cout << VAR_NAME(fileNameDescGlobalBundling) << " = " << fileNameDescGlobalBundling << std::endl;
-		std::cout << std::endl;
-
 		//Read the global app state
+		std::string fileNameDescGlobalApp = "zParametersDefault.txt";
 		ParameterFile parameterFileGlobalApp(fileNameDescGlobalApp);
-		std::ofstream out;
-		if (argc == 4) //for scan net: overwrite .sens file
-		{
-			const std::string filename = std::string(argv[3]);
-			parameterFileGlobalApp.overrideParameter("s_binaryDumpSensorFile", filename);
-			std::cout << "Overwriting s_binaryDumpSensorFile; now set to " << filename << std::endl;
-
-			//redirect stdout to file
-			out.open(util::removeExtensions(filename) + ".friedliver.log");
-			//out.open("debug/" + util::removeExtensions(util::fileNameFromPath(filename)) + ".friedliver.log");
-			if (!out.is_open()) throw MLIB_EXCEPTION("unable to open log file " + util::removeExtensions(filename) + ".friedliver.log");
-			//std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
-			std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
-			std::cout << VAR_NAME(fileNameDescGlobalApp) << " = " << fileNameDescGlobalApp << std::endl;		//log the param file used
-			std::cout << VAR_NAME(fileNameDescGlobalBundling) << " = " << fileNameDescGlobalBundling << std::endl;
-			std::cout << std::endl;
-		}
 		GlobalAppState::getInstance().readMembers(parameterFileGlobalApp);
 
 		//Read the global camera tracking state
+		std::string fileNameDescGlobalBundling = "zParametersBundlingDefault.txt";
 		ParameterFile parameterFileGlobalBundling(fileNameDescGlobalBundling);
 		GlobalBundlingState::getInstance().readMembers(parameterFileGlobalBundling);
 

@@ -41,10 +41,6 @@
 #include "RGBDSensor.h"
 #include "BinaryDumpReader.h"
 //TODO add other sensors here
-#include "PrimeSenseSensor.h"
-#include "KinectSensor.h"
-#include "KinectOneSensor.h"
-#include "StructureSensor.h"
 #include "SensorDataReader.h"
 
 

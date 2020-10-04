@@ -9,8 +9,9 @@
 //#define STRUCTURE_SENSOR
 
 #define SENSOR_DATA_READER
-#define RUN_MULTITHREADED
-
+//#define RUN_MULTITHREADED
+//간단하게 보려고 주석친거임, 이거 안하면 속도 절망
+// TODO
 #include "stdafx.h"
 
 #include <vector>
