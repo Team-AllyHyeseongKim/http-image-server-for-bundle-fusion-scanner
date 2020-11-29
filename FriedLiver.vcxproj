@@ -44,8 +44,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>$(WindowsSDK_ExecutablePath_x86);$(WindowsSDK_ExecutablePath_x64);$(ExecutablePath)</ExecutablePath>
-    <IncludePath>$(IncludePath);$(WindowsSDK_IncludePath);$(KINECTSDK10_DIR)\inc;$(KINECTSDK20_DIR)\inc;$(OPENNI2_INCLUDE64);$(DXSDK_DIR)Include;./Source/;./Source/SiftGPU/;./Include;./Include/Intel;./Include/cutil/inc;./Include/Uplink;../external/mlib/include;../../mlibExternal/include</IncludePath>
-    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x64;$(KINECTSDK10_DIR)\lib\amd64;$(CUDA_LIB_PATH);$(KINECTSDK20_DIR)\lib\x64;$(OPENNI2_LIB64);Libs;../../mlibExternal/libsWindows/lib64</LibraryPath>
+    <IncludePath>$(IncludePath);$(WindowsSDK_IncludePath);$(KINECTSDK10_DIR)\inc;$(KINECTSDK20_DIR)\inc;$(OPENNI2_INCLUDE64);$(DXSDK_DIR)Include;./Source/;./Source/SiftGPU/;./Include;./Include/Intel;./Include/cutil/inc;./Include/Uplink;../external/mlib/include;../../mlibExternal/include;C:\Program Files\Python38\include</IncludePath>
+    <LibraryPath>$(LibraryPath);$(DXSDK_DIR)Lib\x64;$(KINECTSDK10_DIR)\lib\amd64;$(CUDA_LIB_PATH);$(KINECTSDK20_DIR)\lib\x64;$(OPENNI2_LIB64);Libs;../../mlibExternal/libsWindows/lib64;C:\Program Files\Python38\libs</LibraryPath>
     <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -66,16 +66,16 @@
       <ExceptionHandling>Sync</ExceptionHandling>
       <PreprocessorDefinitions>WIN32;_DEBUG;DEBUG;PROFILE;_CONSOLE;D3DXFX_LARGEADDRESS_HANDLE;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <AdditionalIncludeDirectories>Source\DXUT\Optional;Source\DXUT\Core;Include\Uplink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source\DXUT\Optional;Source\DXUT\Core;Include\Uplink;C:\opencv4.5\opencv\build\include\opencv2;C:\opencv4.5\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalOptions>/Zm125 %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;d3dx11d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;Shlwapi.lib;cudart.lib;cublas.lib;FreeImage.lib;zlib64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world450d.lib;d3d11.lib;d3dcompiler.lib;d3dx11d.lib;d3dx9d.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;Shlwapi.lib;cudart.lib;cublas.lib;FreeImage.lib;zlib64.lib;python38.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../opencv/lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../opencv/lib/;C:\opencv4.5\opencv\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDPIAwareness>true</EnableDPIAwareness>
@@ -100,18 +100,18 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <ExceptionHandling>Sync</ExceptionHandling>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;D3DXFX_LARGEADDRESS_HANDLE;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>Source\DXUT\Optional;Source\DXUT\Core;Include\Uplink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>Source\DXUT\Optional;Source\DXUT\Core;Include\Uplink;C:\opencv4.5\opencv\build\include\opencv2;C:\opencv4.5\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <DisableSpecificWarnings>4819</DisableSpecificWarnings>
       <AdditionalOptions>/Zm113 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;d3dx11.lib;d3dx9.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;Shlwapi.lib;cudart.lib;cublas.lib;FreeImage.lib;zlib64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_world450.lib;d3d11.lib;d3dcompiler.lib;d3dx11.lib;d3dx9.lib;dxerr.lib;dxguid.lib;winmm.lib;comctl32.lib;Shlwapi.lib;cudart.lib;cublas.lib;FreeImage.lib;zlib64.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <SubSystem>Console</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>../opencv/lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../opencv/lib/;C:\opencv4.5\opencv\build\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDPIAwareness>true</EnableDPIAwareness>
@@ -135,6 +135,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomSensor.h" />
     <ClInclude Include="Source\BinaryDumpReader.h" />
     <ClInclude Include="Source\Bundler.h" />
     <ClInclude Include="Source\ConditionManager.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="Source\GlobalBundlingState.h" />
     <ClInclude Include="Source\GlobalDefines.h" />
     <ClInclude Include="Source\ImageHelper.h" />
+    <ClInclude Include="Source\KinectSensor.h" />
     <ClInclude Include="Source\mLib.h" />
     <ClInclude Include="Source\mLibCuda.h" />
     <ClInclude Include="Source\OnlineBundler.h" />
@@ -229,6 +231,7 @@
     <ClInclude Include="Source\TrajectoryManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CustomSensor.cpp" />
     <ClCompile Include="Source\BinaryDumpReader.cpp" />
     <ClCompile Include="Source\Bundler.cpp" />
     <ClCompile Include="Source\ConditionManager.cpp" />
@@ -295,6 +298,7 @@
     </ClCompile>
     <ClCompile Include="Source\FriedLiver.cpp" />
     <ClCompile Include="Source\GlobalAppState.cpp" />
+    <ClCompile Include="Source\KinectSensor.cpp" />
     <ClCompile Include="Source\mLib.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

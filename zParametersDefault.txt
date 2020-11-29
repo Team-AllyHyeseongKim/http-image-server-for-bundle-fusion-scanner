@@ -45,8 +45,8 @@ s_SDFIntegrationWeightSample = 1;		//weight for an integrated depth value
 s_SDFIntegrationWeightMax = 99999999;	//maximum integration weight for a voxel
 // s_SDFBlockSize is pound defined (SDF_BLOCK_SIZE)
 // s_hashBucketSize is pound defined (HASH_BUCKET_SIZE)
-s_hashNumBuckets = 800000;				//smaller voxels require more space
-s_hashNumSDFBlocks = 200000;//100000;	//smaller voxels require more space
+s_hashNumBuckets = 400000;				//smaller voxels require more space
+s_hashNumSDFBlocks = 100000;//100000;	//smaller voxels require more space
 s_hashMaxCollisionLinkedListSize = 7;
 
 // raycast
@@ -55,7 +55,7 @@ s_SDFRayThresSampleDistFactor = 50.5f;	//(don't touch) s_SDFRayThresSampleDist =
 s_SDFRayThresDistFactor = 50.0f;		//(don't touch) s_SDFRayThresDist = s_SDFRayThresSampleDistFactor*s_rayIncrement;
 s_SDFUseGradients 		= false;		//analytic gradients for rendering
 
-s_binaryDumpSensorFile = "../data/apt0.sens";
+s_binaryDumpSensorFile = "../data/rapt0.sens";
 s_binaryDumpSensorUseTrajectory = false;
 
 // filtering (unused here, see params in zParametersBundlingDefault.txt)
@@ -94,7 +94,7 @@ s_remappingDepthDiscontinuityThresLin	 = 0.01f;
 
 s_bUseCameraCalibration = false;
 
-s_marchingCubesMaxNumTriangles = 1000000; // max buffer size for marching cube
+s_marchingCubesMaxNumTriangles = 3000000; // max buffer size for marching cube
 
 //streaming parameters (streaming disabled for BundleFusion)
 s_streamingEnabled = false;
@@ -112,6 +112,4 @@ s_recordCompression = true;		//if recoding is enabled; then compression is used 
 s_recordDataWidth = 640;		//only applies to the non compressed version (see RGBDSensor.cpp)
 s_recordDataHeight = 480;		//only applies to the non compressed version (see RGBDSensor.cpp)
 s_recordDataFile = "dump/recording.sens";
-s_reconstructionEnabled = true;
-
-
+s_reconstructionEnabled = true

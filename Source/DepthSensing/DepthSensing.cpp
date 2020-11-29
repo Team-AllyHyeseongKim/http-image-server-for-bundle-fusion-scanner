@@ -917,6 +917,9 @@ void StopScanningAndExit(bool aborted = false)
 	g_depthSensingBundler->printMemStats();
 #endif
 	std::cout << "[ stop scanning and exit ]" << std::endl;
+
+	//최후에 여기로 온다.
+	//heebin
 	if (!aborted) {
 		//estimate validity of reconstruction
 		bool valid = true;
@@ -930,7 +933,9 @@ void StopScanningAndExit(bool aborted = false)
 		numValidTransforms = PoseHelper::countNumValidTransforms(trajectory);		numTransforms = (unsigned int)trajectory.size();
 		if (numValidTransforms < (unsigned int)std::round(0.5f * numTransforms)) valid = false; // not enough valid transforms
 		std::cout << "#VALID TRANSFORMS = " << numValidTransforms << std::endl;
-		((SensorDataReader*)g_depthSensingRGBDSensor)->saveToFile(saveFile, trajectory); //overwrite the original file
+		
+		//heebin : 이거 sens 파일 만드는건데, 일단 걸렀어, 에러나
+		//((SensorDataReader*)g_depthSensingRGBDSensor)->saveToFile(saveFile, trajectory); //overwrite the original file
 
 		//if (GlobalAppState::get().s_sensorIdx == 8) ((SensorDataReader*)g_depthSensingRGBDSensor)->evaluateTrajectory(trajectory);
 
@@ -1042,7 +1047,7 @@ void CALLBACK OnD3D11FrameRender(ID3D11Device* pd3dDevice, ID3D11DeviceContext* 
 			g_depthSensingRGBDSensor->recordFrame();
 
 		}
-
+//MAY PROBLEM : HEEBIN
 		if (validTransform && GlobalAppState::get().s_reconstructionEnabled) {
 			DepthCameraData depthCameraData(g_CudaImageManager->getIntegrateFrame(frameIdx).getDepthFrameGPU(), g_CudaImageManager->getIntegrateFrame(frameIdx).getColorFrameGPU());
 			integrate(depthCameraData, transformation);

@@ -108,6 +108,7 @@ bool SensorDataReader::processDepth()
 
 		incrementRingbufIdx();
 
+		//이 시스템은 무조건 색 데이터를 요구한다. 참고할 것.
 		if (m_bHasColorData) {
 			for (unsigned int i = 0; i < getColorWidth()*getColorHeight(); i++) {
 				m_colorRGBX[i] = vec4uc(frameState.m_colorFrame[i]);
@@ -164,6 +165,8 @@ void SensorDataReader::saveToFile(const std::string& filename, const std::vector
 
 	m_sensorData->saveToFile(filename);
 }
+
+
 
 void SensorDataReader::evaluateTrajectory(const std::vector<mat4f>& trajectory) const
 {

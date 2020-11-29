@@ -34,7 +34,8 @@ public:
 
 
 	bool processColor()	{
-		//everything done in process depth since order is relevant (color must be read first)
+		//everything done in process depth, since order is relevant (color must be read first)
+		//읽는 순서가 중요하기 때문에, processDepth함수에서 다 해버림 
 		return true;
 	}
 

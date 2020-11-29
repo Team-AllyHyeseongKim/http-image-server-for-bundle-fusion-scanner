@@ -137,6 +137,10 @@
     <ClCompile Include="Source\RGBDSensor.cpp">
       <Filter>Sensors</Filter>
     </ClCompile>
+    <ClCompile Include="Source\KinectSensor.cpp" />
+    <ClCompile Include="CustomSensor.cpp">
+      <Filter>Sensors\heebin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\FriedLiver.h" />
@@ -375,6 +379,10 @@
     <ClInclude Include="Source\RGBDSensor.h">
       <Filter>Sensors</Filter>
     </ClInclude>
+    <ClInclude Include="Source\KinectSensor.h" />
+    <ClInclude Include="CustomSensor.h">
+      <Filter>Sensors\heebin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="DXUT">
@@ -397,6 +405,9 @@
     </Filter>
     <Filter Include="SBA">
       <UniqueIdentifier>{c3dc0052-729c-4526-b930-a469d7d017a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sensors\heebin">
+      <UniqueIdentifier>{72c175dd-a57b-4917-8639-f4e05c371e43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

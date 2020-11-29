@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "FriedLiver.h"
 
+
+
+
+
+
+
 RGBDSensor* getRGBDSensor()
 {
 	static RGBDSensor* g_sensor = NULL;
-
+	if (g_sensor != NULL)	return g_sensor;
 	if (GlobalAppState::get().s_sensorIdx == 8) {
-		g_sensor = new SensorDataReader;
+		g_sensor = new CustomSensor; // new SensorDataReader; // 
 		return g_sensor;
 	}
 
@@ -43,7 +49,14 @@ void bundlingThreadFunc() {
 
 	while (1) {
 		// opt
+		//heebin
+		//여기서 10개씩 묶어서 처리함
+		
+
 		if (g_RGBDSensor->isReceivingFrames()) {
+			/*if (g_bundler->getCurrProcessedFrame() == 21) {
+				StopScanningAndExit(true);
+			}*/
 			if (g_bundler->getCurrProcessedFrame() % 10 == 0) { // stop solve
 				if (tOpt.joinable()) {
 					tOpt.join();
@@ -93,8 +106,11 @@ void bundlingThreadFunc() {
 	}
 }
 
+
 int main(int argc, char** argv)
 {
+
+
 	// Enable run-time memory check for debug builds.
 #if defined(DEBUG) | defined(_DEBUG)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -183,3 +199,66 @@ int main(int argc, char** argv)
 }
 
 
+
+
+//위에 있는놈이 진짜고, 이건 테스트용
+/*
+int main(int argc, char** argv)
+{
+	
+	
+	http_listener listener(U("http://192.168.0.21:3000"));        //Server URL, Port 지정, 내주소 적어
+
+	//관리자 모드로 vs를 실행해야 켜지는 경향을 확인
+	try
+	{
+		listener.open().then([&listener]() {
+			cout << "\n start!!\n";
+			}).wait();    //Server open
+
+	}
+	catch (const std::exception& e)
+	{
+		printf("Error exception:%s\n", e.what());
+	}
+
+
+
+	listener.support(methods::GET, [](http_request req) {                        //support() 함수를 통해 GET방식 지정
+		req.reply(status_codes::OK, U("hello world"));                        //Lamda방식으로 간단하게 구현.
+		});
+
+	listener.support(methods::POST, [](http_request req) {                        //support() 함수를 통해 POST방식 지정
+		
+		req.extract_json().then([&req](json::value val) {
+			if (val.is_null()) {
+				req.reply(status_codes::BadRequest, U("No object in post data."));
+			}
+			else {
+				
+				cv::Mat img_dep = cv::imdecode(from_base64(val[U("depth")].as_string()), 1);
+				cv::Mat img_col = cv::imdecode(from_base64(val[U("color")].as_string()), 1);
+
+				//cv::imshow("dd", img);
+				//cv::waitKey(0);
+				req.reply(status_codes::OK, U("ok"));
+			
+			}
+			}).wait();
+		});
+
+
+
+	while (true);
+
+	listener.close();
+
+
+
+
+
+
+	return 0;
+}
+
+*/

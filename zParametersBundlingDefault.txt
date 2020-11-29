@@ -1,5 +1,3 @@
-
-
 s_verbose = false;
 
 s_erodeSIFTdepth = true;
@@ -74,4 +72,3 @@ s_depthSigmaR = 0.05f;	//bilateral filter sigma range
 s_depthFilter = true;	//bilateral filter enabled depth
 
 s_useComprehensiveFrameInvalidation = true;
-
