@@ -12,3 +12,16 @@ we made it can scanned by http image server
 
 please check customSensor.cpp/h file
 that's only contrib point
+
+
+# tips
+additional lib location & file
+
+ /c/scan
+$ ls
+BundleFusion-master/  mLib/  mLibExternal/
+
+/c/scan/BundleFusion-master
+$ ls
+data/  external/  FriedLiver/  img/  LICENSE.txt  README.md
+
