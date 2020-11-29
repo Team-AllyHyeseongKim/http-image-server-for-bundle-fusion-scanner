@@ -8,3 +8,7 @@ for server https://github.com/microsoft/cpprestsdk
 we made it can scanned by http image server
 
 
+
+
+please check customSensor.cpp/h file
+that's only contrib point
